@@ -11,37 +11,62 @@
     }
     .container {
         height: 100%;
-        background-color: #40a7e7;
     }
 </style>
 
 <script>
     import wepy from 'wepy'
+    import bmap from './wxapp-jsapi-master/src/bmap-wx'
+    import {BAIDU_AK , AMAP_KEY} from "./config/config";
+
     import 'wepy-async-function'
 
 
     export default class extends wepy.app {
         config = {
             pages: [
-                'pages/index'
+                'pages/addCity',
+                'pages/index',
             ],
             window: {
                 backgroundTextStyle: 'light',
                 navigationBarBackgroundColor: '#40a7e7',
                 navigationBarTitleText: 'WeChat',
-                navigationBarTextStyle: '#fff'
+                navigationBarTextStyle: '#fff',
+                enablePullDownRefresh:true,
+                backgroundTextStyle:"dark",
             }
         }
 
         globalData = {
             userInfo: null,
-            test : '123',
+            BMap : null,
+            addCityData : null,
+        }
+
+
+        AMapGetLocation (add)
+        {
+            return wepy.request('https://restapi.amap.com/v3/geocode/geo?key='+ AMAP_KEY+'&address='+add+'&city='+add);
+        }
+
+         AMapInputtips (keyword)
+        {
+            return wepy.request('https://restapi.amap.com/v3/assistant/inputtips?key='+ AMAP_KEY+'&keywords='+keyword+'&type=190105|190104&datatype=all');
         }
 
         constructor() {
             super();
             this.use('requestfix');
             this.use('promisify');
+        }
+
+        onLaunch ()
+        {
+            this.globalData.BMap = new bmap.BMapWX({
+                ak: BAIDU_AK,
+            });
+
         }
 
 

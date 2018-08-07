@@ -1,8 +1,47 @@
 <style lang="less">
-    
+    .container {
+        .add-city-container {
+            background-color: #40a7e7;
+        }
+        .add-city-push-content {
+            padding-left: 30rpx;
+            .city-item {
+
+            }
+        }
+    }
+
 </style>
 
 <template>
+    <view class="container">
+        <view class="add-city-container">
+            <view class="add-city-search-input">
+                <input  @input="handleInputTips" type="text" placeholder-class="phcolor"  placeholder="请输入城市"/>
+            </view>
+        </view>
+        <view class="add-city-push-content">
+            <view wx:if="{{isSearch}}">
+                正在搜索
+            </view>
+            <view wx:elif="{{tips == null}}" class="tips-alert">
+                请输入
+            </view>
+            <view wx:elif="{{ tips.length === 0}}" class="tips-alert">
+                没有数据
+            </view>
+            <view wx:else>
+                <repeat for="{{tips}}" ket="index" index="index" item="tip">
+                    <view class="city-item" @tap="handleClick({{index}} ,{{tip}})">
+                        {{tip.name}} <text class="position">{{tip.district}}</text>
+                    </view>
+                </repeat>
+
+            </view>
+
+
+        </view>
+    </view>
 
 </template>
 
@@ -11,15 +50,66 @@
 
     export default class addCity extends wepy.page {
         config = {
-            navigationBarTitleText : "",
-            usingComponents: {
-                
+            navigationBarTitleText : "添加城市",
+
+        }
+
+        data = {
+            inputData : '',
+            timeout : null,
+            tips: null,
+            isSearch : false,
+        }
+
+        methods = {
+            handleInputTips (e)
+            {
+                if(this.timeout != null){
+                    clearTimeout(this.timeout);
+                }
+                let text = e.detail.value;
+
+
+                if(text === '')
+                    return;
+
+
+
+                this.timeout = setTimeout( async ()=>{
+                    this.isSearch = !this.isSearch;
+                    this.$apply();
+
+                    let res = await this.$parent.AMapInputtips(text);
+
+                    this.tips = res.data.tips;
+                    this.isSearch = !this.isSearch;
+                    this.$apply();
+                },300)
+
+            },
+
+            handleClick(index, item ,e){
+
+                this.$parent.addCityData =  item;
+
+                console.log(this.$parent.addCityData);
+
             }
         }
-        
+
+
+
+
         constructor ()
         {
-            super()
+            super();
         }
+
+        onShow ()
+        {
+            this.$parent.addCityData = null;
+        }
+
+
     }
 </script>  

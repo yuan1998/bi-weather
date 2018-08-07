@@ -1,6 +1,8 @@
 <style lang="less">
+
     .container {
         color:#D7EFFA;
+        background-color: #40a7e7;
 
         .search-text-wrap {
             padding-left: 40rpx;
@@ -256,13 +258,10 @@
 
 <script>
     import wepy from 'wepy'
-    import bmap from '../wxapp-jsapi-master/src/bmap-wx'
-    import {BAIDU_AK , AMAP_KEY} from "../config/config";
-
 
     export default class Index extends wepy.page {
         config = {
-            navigationBarTitleText: 'Weather'
+            navigationBarTitleText: 'Weather',
         }
 
 
@@ -270,6 +269,7 @@
             originalData :null,
             currentWeather:null,
             BMap: null,
+            pullLoading:false,
             lnglat: '',
             error:false,
             errorMsg : '',
@@ -285,7 +285,6 @@
 
         handleSearch(e)
         {
-
             console.log(this.inputData);
         }
 
@@ -319,7 +318,8 @@
         }
 
 
-        async getWeather (location) {
+        async getWeather (location)
+        {
             let data = {
                 fail: this.fail.bind(this),
                 success: this.success.bind(this),
@@ -334,7 +334,7 @@
                 this.lnglat ='';
             }
 
-            this.BMap.weather(data);
+            return await this.BMap.weather(data);
         }
 
 
@@ -384,8 +384,12 @@
             this.currentWeather.fahrenheit = this.convertToF(this.currentWeather.celsius);
 
             this.$apply();
-            console.log(this.originalData);
-            console.log(this.currentWeather);
+
+            if(this.pullLoading){
+                wx.stopPullDownRefresh();
+                this.pullLoading = false;
+            }
+
         }
 
 
@@ -395,16 +399,11 @@
             // console.log(this.originalData);
         }
 
-        filterLngLat (loc)
-        {
-            return Object.keys(loc).map(key => loc[key] ).join();
-        }
-
         async getLocation (add)
         {
             this.error = false;
 
-            let res = await wepy.request('https://restapi.amap.com/v3/geocode/geo?key='+ AMAP_KEY+'&address='+ add+'&city='+add);
+            let res = await this.$parent.AMapGetLocation(add);
             if(res.data.status === 0){
                 this.error = true;
                 this.errorMsg = '';
@@ -420,13 +419,16 @@
         }
 
 
-        onShow() {
-            this.BMap = new bmap.BMapWX({
-                ak: BAIDU_AK,
-            });
-
+        onPullDownRefresh ()
+        {
+            this.pullLoading = true;
             this.getWeather();
-            this.$parent.globalData.test =312;
+            console.log(1);
+        }
+
+        onShow() {
+            this.BMap = this.$parent.globalData.BMap;
+            this.getWeather();
             console.log(this.$parent.globalData);
         }
 
