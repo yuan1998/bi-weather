@@ -120,8 +120,6 @@
             background-color: #3E9FDC;
 
             .weather-tip-item {
-                padding-left: 12rpx;
-                padding-right: 12rpx;
                 border-bottom: 2rpx solid #53B1E2;
                 font-size: 0;
                 display: flex;
