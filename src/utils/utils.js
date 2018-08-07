@@ -20,7 +20,16 @@ export const getCitys  = () => {
  * @param data {Array} city data array.
  * @returns {*} sync result.
  */
-export const setCitys = (data) => {
+export const setCitys = ({ data = null , newData }) => {
+
+    if(!data && !newData)
+        return false;
+
+    if(data === null && newData ){
+        data = getCitys();
+        data.push(newData);
+    }
+
     return wepy.setStorageSync('BI_CITYS',data);
 }
 
@@ -34,12 +43,12 @@ export const setCitys = (data) => {
 export const changeCity = (index , newData) => {
     let data = getCitys();
     data[index] = newData;
-    return setCitys(data);
+    return setCitys({data});
 }
 
 
 export const deleteCity = (index) => {
     let data = getCitys();
     data.splice(index ,1);
-    return setCitys(data);
+    return setCitys({data});
 }
