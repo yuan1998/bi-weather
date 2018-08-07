@@ -25,9 +25,9 @@
     export default class extends wepy.app {
         config = {
             pages: [
+                'pages/index',
                 'pages/city',
                 'pages/addCity',
-                'pages/index',
             ],
             window: {
                 backgroundTextStyle: 'light',

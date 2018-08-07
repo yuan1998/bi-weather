@@ -1,39 +1,18 @@
 <style lang="less">
+    page {
+        height: 100%;
+        background-color: #F9F9F9;
+
+    }
 
     .container {
+        height: 100%;
         color:#D7EFFA;
         background-color: #40a7e7;
 
-        .search-text-wrap {
-            padding-left: 40rpx;
-            padding-right: 40rpx;
-            padding-top: 20rpx;
-
-            .search-icon {
-                width: 40rpx;
-                height: 40rpx;
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-
-            .search-text input{
-                font-size: 28rpx;
-                font-weight: lighter;
-                text-align: left;
-                display: block;
-                line-height: 60rpx;
-                border-bottom: 2rpx solid #D0E9F9;
-                padding-left: 50rpx;
-
-                .phcolor {
-                    color:#D7EFFA;
-                }
-
-            }
-
+        .swiper-container {
+            height: 100%;
         }
-
 
         .position-wrap {
             text-align: center;
@@ -171,20 +150,14 @@
 </style>
 <template>
     <view class="container">
-        <view class="search-container">
-            <view class="search-wrapper">
+        <div class="swiper-container">
+            <swiper>
+                <repeat for="{{}}">
 
-            </view>
+                </repeat>
+            </swiper>
 
-        </view>
-        <view class="search-text-wrap">
-            <view class="search-text">
-                <form bindsubmit="handleSearch"  class="search-form">
-                    <image class="search-icon" src="../assets/search.png"></image>
-                    <input type="text" placeholder-class="phcolor" value="{{inputData}}" placeholder="请输入城市"/>
-                </form>
-            </view>
-        </view>
+        </div>
 
         <view class="center-container">
             <view class="position-wrap">
@@ -258,6 +231,7 @@
 
 <script>
     import wepy from 'wepy'
+    import {getActiveCity , getCitys} from "../utils/utils";
 
     export default class Index extends wepy.page {
         config = {
@@ -271,21 +245,15 @@
             BMap: null,
             pullLoading:false,
             lnglat: '',
-            error:false,
-            errorMsg : '',
-            inputData : '',
             png: [
                 'clothes.png',
                 'cart.png',
                 'drug.png',
                 'sport.png',
                 'dd.png',
-            ]
-        }
-
-        handleSearch(e)
-        {
-            console.log(this.inputData);
+            ],
+            city:[],
+            activeCity:0,
         }
 
         pm25Parse (pm25)
@@ -393,7 +361,6 @@
         }
 
 
-
         fail(res) {
             // this.originalData = res.originalData.result[0];
             // console.log(this.originalData);
@@ -423,7 +390,15 @@
         {
             this.pullLoading = true;
             this.getWeather();
-            console.log(1);
+        }
+
+        onLoad()
+        {
+            this.activeCity = getActiveCity();
+            this.city = getCitys();
+
+            if(city.length === 0)
+
         }
 
         onShow() {

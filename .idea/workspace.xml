@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97f2baad-32e3-411e-a6a3-b8384817d816" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.wepycache" beforeDir="false" afterPath="$PROJECT_DIR$/.wepycache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/addCity.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/addCity.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/city.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/city.wpy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.wpy" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.wpy" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,8 +17,8 @@
       <file leaf-file-name="app.wpy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1369">
-              <caret line="64" column="16" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="16" />
+            <state relative-caret-position="155">
+              <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="8" />
               <folding>
                 <element signature="e#196#219#0" expanded="true" />
               </folding>
@@ -32,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="city.wpy" pinned="false" current-in-tab="true">
+      <file leaf-file-name="city.wpy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/city.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="502">
-              <caret line="116" column="66" selection-start-line="116" selection-start-column="66" selection-end-line="116" selection-end-column="66" />
+            <state relative-caret-position="1232">
+              <caret line="116" column="66" lean-forward="true" selection-start-line="116" selection-start-column="66" selection-end-line="116" selection-end-column="66" />
               <folding>
                 <element signature="e#523#546#0" expanded="true" />
               </folding>
@@ -44,15 +38,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.wpy" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.wpy" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+            <state relative-caret-position="393">
+              <caret line="398" column="12" selection-start-line="398" selection-start-column="12" selection-end-line="398" selection-end-column="12" />
               <folding>
+                <element signature="n#view#2;n#view#0;n#template#0;n#!!top" />
+                <element signature="n#view#3;n#view#0;n#template#0;n#!!top" />
+                <element signature="n#view#4;n#view#0;n#template#0;n#!!top" />
+                <element signature="e#5779#5802#0" expanded="true" />
+                <element signature="e#7110#7267#0" />
                 <element signature="e#7285#8173#0" />
                 <element signature="e#421#662#0" />
+                <element signature="e#679#711#0" />
                 <element signature="e#8921#9337#0" />
+                <element signature="e#9331#9355#0" />
+                <element signature="e#9393#9417#0" />
+                <element signature="e#731#762#0" />
                 <element signature="e#1122#1255#0" />
               </folding>
             </state>
@@ -62,8 +65,8 @@
       <file leaf-file-name="addCity.wpy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/addCity.wpy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2264">
-              <caret line="1" selection-start-line="1" selection-end-line="5" selection-end-column="5" />
+            <state relative-caret-position="93">
+              <caret line="3" selection-start-line="3" selection-end-line="4" />
               <folding>
                 <element signature="e#1275#1298#0" expanded="true" />
               </folding>
@@ -99,12 +102,12 @@
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/config/config.js" />
-        <option value="$PROJECT_DIR$/src/pages/index.wpy" />
         <option value="$PROJECT_DIR$/src/components/loading.wpy" />
         <option value="$PROJECT_DIR$/src/pages/addCity.wpy" />
-        <option value="$PROJECT_DIR$/src/app.wpy" />
         <option value="$PROJECT_DIR$/src/utils/utils.js" />
         <option value="$PROJECT_DIR$/src/pages/city.wpy" />
+        <option value="$PROJECT_DIR$/src/app.wpy" />
+        <option value="$PROJECT_DIR$/src/pages/index.wpy" />
       </list>
     </option>
   </component>
@@ -212,12 +215,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1533546875600</updated>
-      <workItem from="1533546877186" duration="42002000" />
+      <workItem from="1533546877186" duration="43648000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42002000" />
+    <option name="totallyTimeSpent" value="43648000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1680" height="1028" extended-state="0" />
@@ -288,45 +291,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-          <folding>
-            <element signature="e#7285#8173#0" />
-            <element signature="e#421#662#0" />
-            <element signature="e#8921#9337#0" />
-            <element signature="e#1122#1255#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1369">
-          <caret line="64" column="16" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="16" />
+        <state relative-caret-position="155">
+          <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="8" />
           <folding>
             <element signature="e#196#219#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/city.wpy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1232">
+          <caret line="116" column="66" lean-forward="true" selection-start-line="116" selection-start-column="66" selection-end-line="116" selection-end-column="66" />
+          <folding>
+            <element signature="e#523#546#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/addCity.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2264">
-          <caret line="1" selection-start-line="1" selection-end-line="5" selection-end-column="5" />
+        <state relative-caret-position="93">
+          <caret line="3" selection-start-line="3" selection-end-line="4" />
           <folding>
             <element signature="e#1275#1298#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/city.wpy">
+    <entry file="file://$PROJECT_DIR$/src/pages/index.wpy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
-          <caret line="116" column="66" selection-start-line="116" selection-start-column="66" selection-end-line="116" selection-end-column="66" />
+        <state relative-caret-position="393">
+          <caret line="398" column="12" selection-start-line="398" selection-start-column="12" selection-end-line="398" selection-end-column="12" />
           <folding>
-            <element signature="e#523#546#0" expanded="true" />
+            <element signature="n#view#2;n#view#0;n#template#0;n#!!top" />
+            <element signature="n#view#3;n#view#0;n#template#0;n#!!top" />
+            <element signature="n#view#4;n#view#0;n#template#0;n#!!top" />
+            <element signature="e#5779#5802#0" expanded="true" />
+            <element signature="e#7110#7267#0" />
+            <element signature="e#7285#8173#0" />
+            <element signature="e#421#662#0" />
+            <element signature="e#679#711#0" />
+            <element signature="e#8921#9337#0" />
+            <element signature="e#9331#9355#0" />
+            <element signature="e#9393#9417#0" />
+            <element signature="e#731#762#0" />
+            <element signature="e#1122#1255#0" />
           </folding>
         </state>
       </provider>
