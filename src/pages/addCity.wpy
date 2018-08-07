@@ -1,0 +1,25 @@
+<style lang="less">
+    
+</style>
+
+<template>
+
+</template>
+
+<script>
+    import wepy from "wepy"
+
+    export default class addCity extends wepy.page {
+        config = {
+            navigationBarTitleText : "",
+            usingComponents: {
+                
+            }
+        }
+        
+        constructor ()
+        {
+            super()
+        }
+    }
+</script>  

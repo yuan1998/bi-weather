@@ -34,7 +34,8 @@
         }
 
         globalData = {
-            userInfo: null
+            userInfo: null,
+            test : '123',
         }
 
         constructor() {

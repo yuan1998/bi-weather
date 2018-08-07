@@ -177,8 +177,10 @@
         </view>
         <view class="search-text-wrap">
             <view class="search-text">
-                <image class="search-icon" src="../assets/search.png"></image>
-                <input type="text" placeholder-class="phcolor" value="{{inputData}}" placeholder="请输入城市"/>
+                <form bindsubmit="handleSearch"  class="search-form">
+                    <image class="search-icon" src="../assets/search.png"></image>
+                    <input type="text" placeholder-class="phcolor" value="{{inputData}}" placeholder="请输入城市"/>
+                </form>
             </view>
         </view>
 
@@ -283,6 +285,8 @@
 
         handleSearch(e)
         {
+
+            console.log(this.inputData);
         }
 
         pm25Parse (pm25)
@@ -334,25 +338,6 @@
         }
 
 
-        // currentCity
-        //     :
-        //     "西安市"
-        // date
-        //     :
-        //     "周二 08月07日 (实时：31℃)"
-        // pm25
-        //     :
-        //     "72"
-        // temperature
-        //     :
-        //     "37 ~ 26℃"
-        // weatherDesc
-        //     :
-        //     "晴"
-        // wind
-        //     :
-        //     "东南风微风"
-
         parseDate (time)
         {
             let date =new Date(time);
@@ -371,14 +356,22 @@
 
         }
 
+        convertToF (celsius){
+            let fahrenheit ;
+
+            // Only change code below this line
+            fahrenheit = (celsius * (9/5)) + 32; // fahenheit = celsius * 9/5 + 32 works too.
+            // Only change code above this line
+            return fahrenheit;
+        }
+
         getCurrentCelsius (str)
         {
             let reg = /\：(\d+)\℃/g;
 
             let result = reg.exec(str);
-            console.log(result);
-            return result[1];
 
+            return result[1];
         }
 
         success(res) {
@@ -388,6 +381,7 @@
             this.currentWeather.updateTime = new Date().getTime();
             this.currentWeather.updateDate = this.parseDate(this.currentWeather.updateTime);
             this.currentWeather.celsius = this.getCurrentCelsius(this.currentWeather.date);
+            this.currentWeather.fahrenheit = this.convertToF(this.currentWeather.celsius);
 
             this.$apply();
             console.log(this.originalData);
@@ -432,6 +426,8 @@
             });
 
             this.getWeather();
+            this.$parent.globalData.test =312;
+            console.log(this.$parent.globalData);
         }
 
     }
