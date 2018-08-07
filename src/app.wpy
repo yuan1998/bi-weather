@@ -1,0 +1,49 @@
+<style lang="less">
+    view,
+    input,
+    text,
+    image,
+    page
+    {
+    box-sizing: border-box;
+    vertical-align: top;
+        position: relative;
+    }
+    .container {
+        height: 100%;
+        background-color: #40a7e7;
+    }
+</style>
+
+<script>
+    import wepy from 'wepy'
+    import 'wepy-async-function'
+
+
+    export default class extends wepy.app {
+        config = {
+            pages: [
+                'pages/index'
+            ],
+            window: {
+                backgroundTextStyle: 'light',
+                navigationBarBackgroundColor: '#40a7e7',
+                navigationBarTitleText: 'WeChat',
+                navigationBarTextStyle: '#fff'
+            }
+        }
+
+        globalData = {
+            userInfo: null
+        }
+
+        constructor() {
+            super();
+            this.use('requestfix');
+            this.use('promisify');
+        }
+
+
+
+    }
+</script>

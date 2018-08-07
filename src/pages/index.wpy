@@ -1,0 +1,392 @@
+<style lang="less">
+    .container {
+        color:#D7EFFA;
+
+        .search-text-wrap {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+
+            .search-icon {
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            .search-text input{
+                font-size: 14px;
+                font-weight: lighter;
+                text-align: left;
+                display: block;
+                line-height: 30px;
+                border-bottom: 1px solid #D0E9F9;
+                padding-left: 25px;
+
+                .phcolor {
+                    color:#D7EFFA;
+                }
+
+            }
+
+        }
+
+
+        .position-wrap {
+            text-align: center;
+            position: relative;
+            .position {
+                font-size: 15px;
+            }
+
+            .update-time {
+                position: absolute;
+                bottom: 0;
+                right: 15px;
+                font-size: 12px;
+            }
+        }
+
+        .celsius-wrap {
+            padding-top: 20px;
+            text-align: center;
+            padding-bottom: 10px;
+
+            .celsius {
+                font-weight: lighter;
+                color:#fff;
+
+                font-size: 100px;
+            }
+
+            .celsius:after {
+                content:'。';
+                display: inline-block;
+                font-size: 50px;
+                position: absolute;
+                top: 5px;
+
+            }
+
+        }
+
+        .current-weather-wrap {
+            text-align: center;
+
+            .current-weather-info {
+                font-size: 15px;
+                padding-bottom: 10px;
+            }
+
+            .current-weather-pollution {
+                display: inline-block;
+                background-color: #54B6E9;
+                font-size: 12px;
+                height: 18px;
+                line-height: 18px;
+                padding-right: 12px;
+                padding-left: 12px;
+                border-radius: 18px;
+
+            }
+
+        }
+
+        .original-data-wrap {
+            padding-top: 20px;
+            text-align: center;
+            display: block;
+            font-size: 0px;
+            padding-bottom: 10px;
+
+            .original-data-item {
+                padding-top: 5px;
+                padding-bottom: 5px;
+                display: inline-block;
+                font-size: 14px;
+                width: 25%;
+                color: #d0ecf7;
+                background-color: #3E9FDC;
+                line-height: 1.8;
+            }
+
+        }
+
+
+        .weather-tips-wrap {
+
+            .weather-tip-item {
+                padding-left: 10px;
+                padding-right: 10px;
+                background-color: #3E9FDC;
+                border-bottom: 1px solid #53B1E2;
+                font-size: 0;
+                display: flex;
+                align-items: center;
+                justify-items: center;
+
+                .tip-icon-wrap {
+
+                    flex: 1;
+
+
+
+                    image {
+                        width: 50px;
+                        height: 50px;
+
+                        display: inline-block;
+                    }
+                }
+
+                .tip-text-wrap {
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    flex:3;
+
+                    font-size: 13px;
+                    .title {
+                        font-size: 17px;
+                    }
+                }
+
+            }
+
+
+
+
+        }
+
+
+
+
+
+    }
+
+
+</style>
+<template>
+    <view class="container">
+        <view class="search-container">
+            <view class="search-wrapper">
+
+            </view>
+
+        </view>
+        <view class="search-text-wrap">
+            <view class="search-text">
+                <image class="search-icon" src="../assets/search.png"></image>
+                <input type="text" placeholder-class="phcolor" value="{{inputData}}" placeholder="请输入城市"/>
+            </view>
+        </view>
+
+        <view class="center-container">
+            <view class="position-wrap">
+                <text class="position">
+                    北京市
+                </text>
+                <text class="update-time">
+                    06-29 15:34更新
+                </text>
+            </view>
+            <view class="celsius-wrap">
+                <view class="celsius">
+                    39
+                </view>
+            </view>
+
+            <view class="current-weather-wrap">
+                <view class="current-weather-info">
+                    晴
+                </view>
+                <view class="current-weather-pollution">
+                    轻度污染 1123
+                </view>
+            </view>
+        </view>
+
+        <view class="original-data-wrap">
+            <view class="original-data-item">
+                <view class="data-name">
+                    今天
+                </view>
+                <view class="celsius">
+                    39 ~ 25°C
+                </view>
+                <view class="weather">
+                    晴
+                </view>
+                <view class="wind-direction">
+                    东南分
+                </view>
+            </view>
+            <view class="original-data-item">
+                <view class="data-name">
+                    今天
+                </view>
+                <view class="celsius">
+                    39 ~ 25°C
+                </view>
+                <view class="weather">
+                    晴
+                </view>
+                <view class="wind-direction">
+                    东南分
+                </view>
+            </view>
+            <view class="original-data-item">
+                <view class="data-name">
+                    今天
+                </view>
+                <view class="celsius">
+                    39 ~ 25°C
+                </view>
+                <view class="weather">
+                    晴
+                </view>
+                <view class="wind-direction">
+                    东南分
+                </view>
+            </view>
+            <view class="original-data-item">
+                <view class="data-name">
+                    今天
+                </view>
+                <view class="celsius">
+                    39 ~ 25°C
+                </view>
+                <view class="weather">
+                    晴
+                </view>
+                <view class="wind-direction">
+                    东南分
+                </view>
+            </view>
+        </view>
+
+        <view class="weather-tips-wrap">
+
+            <repeat for="{{originalData.index}}" key="index" index="index" item="item">
+                <view class="weather-tip-item">
+                    <view class="tip-icon-wrap">
+                        <image class="tip-icon" src="../assets/{{png[index]}}"></image>
+                    </view>
+                    <view class="tip-text-wrap">
+                        <view class="title">
+                            {{item.tipt}} {{item.zs}}
+                        </view>
+                        <view class="info">
+                            {{item.des}}
+                        </view>
+                    </view>
+                </view>
+            </repeat>
+
+        </view>
+
+
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+    import bmap from '../wxapp-jsapi-master/src/bmap-wx'
+
+
+
+    export default class Index extends wepy.page {
+        config = {
+            navigationBarTitleText: 'Weather'
+        }
+
+
+        data = {
+            ak: 'fXMerIsOybnRNgxzEsDZEgAxMCDKjjpT',
+            originalData :null,
+            currentWeather:null,
+            BMap: null,
+            lnglat: '',
+            error:false,
+            errorMsg : '',
+            inputData : '',
+            png: [
+                'clothes.png',
+                'cart.png',
+                'drug.png',
+                'sport.png',
+                'dd.png',
+            ]
+        }
+
+        handleSearch(e)
+        {
+        }
+
+
+        async getWeather (location) {
+            let data = {
+                fail: this.fail.bind(this),
+                success: this.success.bind(this),
+            }
+
+            if(location){
+                await this.getLocation(location);
+                if(this.lnglat === '')
+                    return;
+
+                data.location = this.lnglat;
+                this.lnglat ='';
+            }
+
+            this.BMap.weather(data);
+        }
+
+
+        fail(res) {
+            // this.originalData = res.originalData.result[0];
+            // console.log(this.originalData);
+        }
+
+        success(res) {
+            this.originalData = res.originalData.results[0];
+            this.currentWeather = res.currentWeather[0];
+            this.$apply();
+            console.log(this.originalData);
+        }
+
+        filterLngLat (loc)
+        {
+            return Object.keys(loc).map(key => loc[key] ).join();
+        }
+
+        async getLocation (add)
+        {
+            this.error = false;
+
+            let res = await wepy.request('https://restapi.amap.com/v3/geocode/geo?key=18466ae6bc3fb6e154cae817f57dc6ff&address='+ add+'&city='+add);
+            if(res.data.status === 0){
+                this.error = true;
+                this.errorMsg = '';
+            }else{
+                if(res.data.geocodes.length === 0){
+                    this.error = true;
+                    this.errorMsg = '搜索不到';
+                    return;
+                }
+
+                this.lnglat = res.data.geocodes[0].location;
+            }
+        }
+
+
+        onShow() {
+            this.BMap = new bmap.BMapWX({
+                ak: this.ak,
+            });
+
+            this.getWeather();
+        }
+
+    }
+</script>
