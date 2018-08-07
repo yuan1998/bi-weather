@@ -3,26 +3,26 @@
         color:#D7EFFA;
 
         .search-text-wrap {
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: 10px;
+            padding-left: 40rpx;
+            padding-right: 40rpx;
+            padding-top: 20rpx;
 
             .search-icon {
-                width: 20px;
-                height: 20px;
+                width: 40rpx;
+                height: 40rpx;
                 position: absolute;
                 left: 0;
                 top: 0;
             }
 
             .search-text input{
-                font-size: 14px;
+                font-size: 28rpx;
                 font-weight: lighter;
                 text-align: left;
                 display: block;
-                line-height: 30px;
-                border-bottom: 1px solid #D0E9F9;
-                padding-left: 25px;
+                line-height: 60rpx;
+                border-bottom: 2rpx solid #D0E9F9;
+                padding-left: 50rpx;
 
                 .phcolor {
                     color:#D7EFFA;
@@ -37,35 +37,35 @@
             text-align: center;
             position: relative;
             .position {
-                font-size: 15px;
+                font-size: 30rpx;
             }
 
             .update-time {
                 position: absolute;
                 bottom: 0;
-                right: 15px;
-                font-size: 12px;
+                right: 30rpx;
+                font-size: 24rpx;
             }
         }
 
         .celsius-wrap {
-            padding-top: 20px;
+            padding-top: 40rpx;
             text-align: center;
-            padding-bottom: 10px;
+            padding-bottom: 20rpx;
 
             .celsius {
                 font-weight: lighter;
                 color:#fff;
 
-                font-size: 100px;
+                font-size: 200rpx;
             }
 
             .celsius:after {
                 content:'。';
                 display: inline-block;
-                font-size: 50px;
+                font-size: 100rpx;
                 position: absolute;
-                top: 5px;
+                top: 10rpx;
 
             }
 
@@ -75,36 +75,36 @@
             text-align: center;
 
             .current-weather-info {
-                font-size: 15px;
-                padding-bottom: 10px;
+                font-size: 30rpx;
+                padding-bottom: 20rpx;
             }
 
             .current-weather-pollution {
                 display: inline-block;
                 background-color: #54B6E9;
-                font-size: 12px;
-                height: 18px;
-                line-height: 18px;
-                padding-right: 12px;
-                padding-left: 12px;
-                border-radius: 18px;
+                font-size: 24rpx;
+                height: 36rpx;
+                line-height: 36rpx;
+                padding-right: 24rpx;
+                padding-left: 24rpx;
+                border-radius: 36rpx;
 
             }
 
         }
 
         .original-data-wrap {
-            padding-top: 20px;
+            padding-top: 40rpx;
             text-align: center;
             display: block;
             font-size: 0px;
-            padding-bottom: 10px;
+            padding-bottom: 20rpx;
 
             .original-data-item {
-                padding-top: 5px;
-                padding-bottom: 5px;
+                padding-top: 10rpx;
+                padding-bottom: 10rpx;
                 display: inline-block;
-                font-size: 14px;
+                font-size: 28rpx;
                 width: 25%;
                 color: #d0ecf7;
                 background-color: #3E9FDC;
@@ -115,39 +115,42 @@
 
 
         .weather-tips-wrap {
+            padding-left: 30rpx;
+            padding-right: 30rpx;
+            background-color: #3E9FDC;
 
             .weather-tip-item {
-                padding-left: 10px;
-                padding-right: 10px;
-                background-color: #3E9FDC;
-                border-bottom: 1px solid #53B1E2;
+                padding-left: 12rpx;
+                padding-right: 12rpx;
+                border-bottom: 2rpx solid #53B1E2;
                 font-size: 0;
                 display: flex;
                 align-items: center;
                 justify-items: center;
 
+
                 .tip-icon-wrap {
 
                     flex: 1;
-
-
-
+                    text-align: center;
                     image {
-                        width: 50px;
-                        height: 50px;
+                        width: 100rpx;
+                        height: 100rpx;
 
                         display: inline-block;
                     }
                 }
 
                 .tip-text-wrap {
-                    padding-top: 10px;
-                    padding-bottom: 10px;
+                    padding-top: 20rpx;
+                    padding-bottom: 20rpx;
                     flex:3;
+                    line-height: 1.4;
 
-                    font-size: 13px;
+                    font-size: 26rpx;
                     .title {
-                        font-size: 17px;
+                        padding-bottom: 10rpx;
+                        font-size: 34rpx;
                     }
                 }
 
@@ -184,85 +187,47 @@
         <view class="center-container">
             <view class="position-wrap">
                 <text class="position">
-                    北京市
+                    {{currentWeather.currentCity}}
                 </text>
                 <text class="update-time">
-                    06-29 15:34更新
+                    {{currentWeather.updateDate}}更新
                 </text>
             </view>
             <view class="celsius-wrap">
                 <view class="celsius">
-                    39
+                    {{currentWeather.celsius}}
                 </view>
             </view>
 
             <view class="current-weather-wrap">
                 <view class="current-weather-info">
-                    晴
+                    {{cuurentWeather.weatherDesc}}
                 </view>
                 <view class="current-weather-pollution">
-                    轻度污染 1123
+                    {{currentWeather.pmt}} {{currentWeather.pm25}}
                 </view>
             </view>
         </view>
 
         <view class="original-data-wrap">
+            <repeat for="{{originalData.weather_data}}" key="index" index="index" item="item">
+
             <view class="original-data-item">
                 <view class="data-name">
-                    今天
+                    {{item.date.length > 5 ? '今天' : item.date}}
                 </view>
                 <view class="celsius">
-                    39 ~ 25°C
+                    {{item.temperature}}
                 </view>
                 <view class="weather">
-                    晴
+                    {{item.weather}}
                 </view>
                 <view class="wind-direction">
-                    东南分
+                    {{item.wind}}
                 </view>
             </view>
-            <view class="original-data-item">
-                <view class="data-name">
-                    今天
-                </view>
-                <view class="celsius">
-                    39 ~ 25°C
-                </view>
-                <view class="weather">
-                    晴
-                </view>
-                <view class="wind-direction">
-                    东南分
-                </view>
-            </view>
-            <view class="original-data-item">
-                <view class="data-name">
-                    今天
-                </view>
-                <view class="celsius">
-                    39 ~ 25°C
-                </view>
-                <view class="weather">
-                    晴
-                </view>
-                <view class="wind-direction">
-                    东南分
-                </view>
-            </view>
-            <view class="original-data-item">
-                <view class="data-name">
-                    今天
-                </view>
-                <view class="celsius">
-                    39 ~ 25°C
-                </view>
-                <view class="weather">
-                    晴
-                </view>
-                <view class="wind-direction">
-                    东南分
-                </view>
-            </view>
+            </repeat>
+
         </view>
 
         <view class="weather-tips-wrap">
@@ -323,6 +288,35 @@
         {
         }
 
+        pm25Parse (pm25)
+        {
+            let text ='';
+
+            switch(true){
+                case pm25 >=0 && pm25 <=50:
+                    text = '优';
+                    break;
+                case pm25>=51 && pm25 <=100:
+                    text = '良';
+                    break;
+                case pm25>=101 && pm25 <=150:
+                    text = '轻度污染';
+                    break;
+                case pm25>=151 && pm25 <=200:
+                    text = '中度污染';
+                    break;
+                case pm25>=201 && pm25 <=300:
+                    text = '重度污染';
+                    break;
+                case pm25>=300:
+                    text = '重度污染';
+                    break;
+            }
+
+
+            return text;
+        }
+
 
         async getWeather (location) {
             let data = {
@@ -343,16 +337,71 @@
         }
 
 
-        fail(res) {
-            // this.originalData = res.originalData.result[0];
-            // console.log(this.originalData);
+        // currentCity
+        //     :
+        //     "西安市"
+        // date
+        //     :
+        //     "周二 08月07日 (实时：31℃)"
+        // pm25
+        //     :
+        //     "72"
+        // temperature
+        //     :
+        //     "37 ~ 26℃"
+        // weatherDesc
+        //     :
+        //     "晴"
+        // wind
+        //     :
+        //     "东南风微风"
+
+        parseDate (time)
+        {
+            let date =new Date(time);
+
+            //月
+            var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+            //日
+            var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+            //时
+            var h = date.getHours();
+            //分
+            var m = date.getMinutes();
+
+            return `${M}-${D} ${h}:${m}`;
+
+
+        }
+
+        getCurrentCelsius (str)
+        {
+            let reg = /\：(\d+)\℃/g;
+
+            let result = reg.exec(str);
+            console.log(result);
+            return result[1];
+
         }
 
         success(res) {
             this.originalData = res.originalData.results[0];
             this.currentWeather = res.currentWeather[0];
+            this.currentWeather.pmt = this.pm25Parse(this.currentWeather.pm25);
+            this.currentWeather.updateTime = new Date().getTime();
+            this.currentWeather.updateDate = this.parseDate(this.currentWeather.updateTime);
+            this.currentWeather.celsius = this.getCurrentCelsius(this.currentWeather.date);
+
             this.$apply();
             console.log(this.originalData);
+            console.log(this.currentWeather);
+        }
+
+
+
+        fail(res) {
+            // this.originalData = res.originalData.result[0];
+            // console.log(this.originalData);
         }
 
         filterLngLat (loc)
