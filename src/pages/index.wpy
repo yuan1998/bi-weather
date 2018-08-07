@@ -257,7 +257,7 @@
 <script>
     import wepy from 'wepy'
     import bmap from '../wxapp-jsapi-master/src/bmap-wx'
-
+    import {BAIDU_AK , AMAP_KEY} from "../config/config";
 
 
     export default class Index extends wepy.page {
@@ -267,7 +267,6 @@
 
 
         data = {
-            ak: 'fXMerIsOybnRNgxzEsDZEgAxMCDKjjpT',
             originalData :null,
             currentWeather:null,
             BMap: null,
@@ -413,7 +412,7 @@
         {
             this.error = false;
 
-            let res = await wepy.request('https://restapi.amap.com/v3/geocode/geo?key=18466ae6bc3fb6e154cae817f57dc6ff&address='+ add+'&city='+add);
+            let res = await wepy.request('https://restapi.amap.com/v3/geocode/geo?key='+ AMAP_KEY+'&address='+ add+'&city='+add);
             if(res.data.status === 0){
                 this.error = true;
                 this.errorMsg = '';
@@ -431,7 +430,7 @@
 
         onShow() {
             this.BMap = new bmap.BMapWX({
-                ak: this.ak,
+                ak: BAIDU_AK,
             });
 
             this.getWeather();
