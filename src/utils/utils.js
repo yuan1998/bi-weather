@@ -3,7 +3,6 @@
  * @author Yuan !998🤓🤓
  * @date 2018/8/7 
 */
-
 import wepy from 'wepy'
 
 
@@ -46,9 +45,40 @@ export const changeCity = (index , newData) => {
     return setCitys({data});
 }
 
-
+/**
+ * delete city .
+ * @param index {Number} city array index.
+ * @returns {*}
+ */
 export const deleteCity = (index) => {
     let data = getCitys();
+    if(!data[index])
+        return false;
+
     data.splice(index ,1);
     return setCitys({data});
+}
+
+
+/**
+ * set active city index.
+ * @param index {Number} city arr index .
+ */
+export const setActiveCity = index =>
+{
+    let len = getCitys().length;
+    if(!(index >= 0 && index <= len-1))
+        return false;
+    wepy.setStorageSync('BI_ACTIVE', index);
+    return true;
+}
+
+
+/**
+ *  get current active city index.
+ * @param _ {Empty} null
+ * @returns {*|number} return current index or zero.
+ */
+export const getActiveCity = _ => {
+    return wepy.getStorageSync('BI_ACTIVE') || 0;
 }

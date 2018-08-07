@@ -1,12 +1,59 @@
 <style lang="less">
+    page {
+
+        background-color: #F9F9F9;
+        height: 100%;
+    }
     .container {
+        height: 100%;
         .add-city-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
             background-color: #40a7e7;
+            padding-left: 15rpx;
+            padding-right: 15rpx;
+            padding-bottom: 10rpx;
+            z-index: 20;
+
+            .search-icon {
+                width: 40rpx;
+                height: 40rpx;
+                position: absolute;
+                left: 5rpx;
+                top: 10rpx;
+            }
+            input {
+                padding-top: 10rpx;
+                height: 60rpx;
+                font-size: 30rpx;
+                line-height: 60rpx;
+                padding-left: 50rpx;
+                border-bottom: 2rpx solid #F6F7F8;
+                color:#fff;
+            }
+
+            .phcolor {
+                font-size: 30rpx;
+
+                color:#fff;
+            }
         }
         .add-city-push-content {
-            padding-left: 30rpx;
+            height: 100%;
+            padding-top: 80rpx;
             .city-item {
+                padding-left: 30rpx;
+                font-size: 30rpx;
+                line-height: 80rpx;
+                border-bottom: 2rpx solid #EDEDED;
+                color:#444;
 
+                .position {
+                    font-size: 25rpx;
+
+                }
             }
         }
     }
@@ -17,18 +64,20 @@
     <view class="container">
         <view class="add-city-container">
             <view class="add-city-search-input">
+                <image class="search-icon" src="../assets/search.png"></image>
+
                 <input  @input="handleInputTips" type="text" placeholder-class="phcolor"  placeholder="请输入城市"/>
             </view>
         </view>
         <view class="add-city-push-content">
             <view wx:if="{{isSearch}}">
-                正在搜索
+                <i-load-more/>
             </view>
             <view wx:elif="{{tips == null}}" class="tips-alert">
-                请输入
+                <i-load-more loading="{{ false }}" />
             </view>
             <view wx:elif="{{ tips.length === 0}}" class="tips-alert">
-                没有数据
+                <i-load-more tip="暂无数据" loading="{{ false }}" />
             </view>
             <view wx:else>
                 <repeat for="{{tips}}" ket="index" index="index" item="tip">
@@ -38,7 +87,7 @@
                 </repeat>
 
             </view>
-
+            <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
 
         </view>
     </view>
@@ -48,17 +97,24 @@
 <script>
     import wepy from "wepy"
 
+    import {setCitys ,getCitys} from "../utils/utils";
+
     export default class addCity extends wepy.page {
         config = {
             navigationBarTitleText : "添加城市",
-
+            usingComponents : {
+                "i-spin" : '../iview/spin/index',
+                'i-load-more' : '../iview/load-more/index',
+            }
         }
+
 
         data = {
             inputData : '',
             timeout : null,
             tips: null,
             isSearch : false,
+            spinShow:false,
         }
 
         methods = {
@@ -76,27 +132,43 @@
 
 
                 this.timeout = setTimeout( async ()=>{
+                    this.tips = [];
                     this.isSearch = !this.isSearch;
                     this.$apply();
 
                     let res = await this.$parent.AMapInputtips(text);
+                    this.tips = this.filterTips(res.data.tips);
 
-                    this.tips = res.data.tips;
                     this.isSearch = !this.isSearch;
                     this.$apply();
                 },300)
 
             },
 
-            handleClick(index, item ,e){
+            async handleClick(index, newData ,e){
+                this.spinShow=true;
+                if(newData.location.length === 0 && newData.address){
+                    newData.location = await this.getLocation(newData.address);
+                }
 
-                this.$parent.addCityData =  item;
-
-                console.log(this.$parent.addCityData);
-
+                setCitys({newData});
+                wepy.navigateBack({delta: 1})
             }
         }
 
+        async getLocation (name)
+        {
+            let res =  await this.$parent.AMapGetLocation(name);
+
+            return res.data.geocodes[0].location;
+        }
+
+        filterTips (data)
+        {
+            let city = getCitys();
+            return data.filter(item => city.findIndex(each => each.name == item.name) == -1);
+
+        }
 
 
 

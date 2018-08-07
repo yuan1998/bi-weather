@@ -1,0 +1,37 @@
+<style lang="less">
+
+
+</style>
+
+<template>
+    <div class="loading-container">
+        <div class="loading-mask"></div>
+        <div class="loading-content">
+
+        </div>
+    </div>
+
+</template>
+
+<script>
+    import wepy from "wepy"
+
+    export default class  extends wepy.component {
+
+        props= {
+            isShow : {
+                type: Boolean ,
+                value:false,
+            },
+            text: {
+                type: String,
+                value:'正在加载'
+            }
+        }
+
+        constructor ()
+        {
+            super()
+        }
+    }
+</script>

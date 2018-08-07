@@ -1,18 +1,100 @@
 <style lang="less">
+    page {
+
+        background-color: #F9F9F9;
+        height: 100%;
+    }
+
+    .control-city-container {
+        height: 100%;
+
+        .city-item {
+            padding-left: 30rpx;
+            font-size: 37rpx;
+            line-height: 90rpx;
+            height: 90rpx;
+            border-bottom: 2rpx solid #EDEDED;
+            color:#444;
+
+            &.active:after {
+                content:'当前激活';
+                font-size: 28rpx;
+                position: absolute;
+                top: 0;
+                right: 30rpx;
+                color:#888;
+            }
+            .position {
+                font-size: 28rpx;
+                padding-left: 10rpx;
+                vertical-align: baseline;
+            }
+        }
+
+        .city-footer {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            .add-btn {
+                display: block;
+                height: 140rpx;
+                line-height: 140rpx;
+                background-color: #00A8ED;
+                color:#fff;
+                font-size: 36rpx;
+                text-align: center;
+
+
+            }
+        }
+    }
 
 </style>
 
 <template>
+    <view class="control-city-container">
+        <view class="control-city-header">
+
+        </view>
+        <view class="city-content">
+            <view wx:if="{{city.length === 0}}">
+                <i-load-more tip="暂无数据" loading="{{ false }}" />
+
+            </view>
+            <view wx:else>
+
+                <repeat  for="{{city}}" key="index" index="index" item="item">
+                    <view class="city-item {{active === index ? 'active' : ''}}" @tap="handleClick({{index}})" >
+                        {{item.name}}<text class="position">{{item.district}}</text>
+                    </view>
+
+                </repeat>
+            </view>
+        </view>
+
+        <view class="city-footer">
+            <navigator url="addCity">
+                <view class="add-btn">
+                    添加城市
+                </view>
+            </navigator>
+        </view>
+
+    </view>
 
 </template>
 
 <script>
     import wepy from "wepy"
-    import {getCitys , setCitys , changeCity , deleteCity} from "../utils/utils";
+    import {getCitys , deleteCity ,setActiveCity , getActiveCity } from "../utils/utils";
 
     export default class citys extends wepy.page {
         config = {
             navigationBarTitleText : "管理城市",
+            usingComponents : {
+                'i-load-more' : '../iview/load-more/index',
+            }
         }
 
         constructor ()
@@ -21,13 +103,39 @@
         }
 
         data = {
-            citys : [],
+            city : [],
+            active : 0,
+        }
+
+
+        methods = {
+
+            /**
+             * o.g name is HandleClickSwitchActive .
+             * but warning function name is too long.
+             * change to handleClick. :<
+             * City item click Event ,change active to click item.
+             * @param index
+             * @param evt
+             */
+            handleClick (index,evt)
+            {
+                setActiveCity(index);
+                this.active = getActiveCity();
+
+            }
+        }
+
+
+        syncCity () {
+            this.city = getCitys();
+            this.active = getActiveCity();
         }
 
 
         onShow ()
         {
-
+            this.syncCity();
         }
 
 

@@ -17,6 +17,7 @@
   "author": "yuan1998 <chizhiyueshu@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "loaders.css": "^0.1.2",
     "moment": "^2.22.2",
     "wepy": "^1.7.2",
     "wepy-async-function": "^1.4.6",

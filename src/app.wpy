@@ -26,8 +26,8 @@
         config = {
             pages: [
                 'pages/city',
-                'pages/index',
                 'pages/addCity',
+                'pages/index',
             ],
             window: {
                 backgroundTextStyle: 'light',
