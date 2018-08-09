@@ -1,0 +1,264 @@
+<style lang="less">
+    .menu-box {
+        position: fixed;
+        bottom: 30rpx;
+        right: 30rpx;
+        width: 80rpx;
+        height: 80rpx;
+        z-index: 2;
+        font-size: 0;
+
+
+        .menu-btn {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #3BA8ED;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            .menu-line-wrap {
+                width: 46rpx;
+                height: 46rpx;
+                position: absolute;
+                margin: 0 auto;
+                -webkit-transition: -webkit-transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+                transition: -webkit-transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+                transition: transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+                transition: transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96), -webkit-transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+                -webkit-transform: none;
+                transform: none;
+
+                .menu-line {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    height: 2rpx;
+                    background-color: #fff;
+                    border-radius: 2rpx;
+                    z-index: 3;
+                    top: 23rpx;
+                    -webkit-transition: -webkit-transform .1596s cubic-bezier(0.52, 0.16, 0.52, 0.84) .1008s;
+                    transition: -webkit-transform .1596s cubic-bezier(0.52, 0.16, 0.52, 0.84) .1008s;
+                    transition: transform .1596s cubic-bezier(0.52, 0.16, 0.52, 0.84) .1008s;
+                    transition: transform .1596s cubic-bezier(0.52, 0.16, 0.52, 0.84) .1008s, -webkit-transform .1596s cubic-bezier(0.52, 0.16, 0.52, 0.84) .1008s;
+                    &.line-top {
+                        transform: translateY(-6rpx);
+                    }
+                    &.line-bottom {
+                        transform: translateY(6rpx);
+                    }
+                }
+
+
+
+            }
+            &.open {
+                -webkit-box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.2);
+                box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.2);
+            }
+            &.open .menu-line {
+                -webkit-transition: -webkit-transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+                transition: -webkit-transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+                transition: transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+                transition: transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96), -webkit-transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+                -webkit-transform: none !important;
+                transform: none !important;
+            }
+            &.open .t {
+                -webkit-transition: -webkit-transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                transition: -webkit-transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                transition: transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                transition: transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s, -webkit-transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+            &.open .b {
+                -webkit-transition: -webkit-transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                transition: -webkit-transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                transition: transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                transition: transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s, -webkit-transform .3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
+
+        }
+
+
+        .menu-list {
+            position: absolute;
+            bottom: 100%;
+            right: -10rpx;
+            overflow: hidden;
+
+            navigator:active {
+                background: none;
+            }
+
+            .menu-list-wrap {
+                padding-top: 20rpx;
+                -webkit-transition: -webkit-transform .19s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                transition: -webkit-transform .19s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                transition: transform .19s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                transition: transform .19s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s, -webkit-transform .19s cubic-bezier(0.04, 0.04, 0.12, 0.96) .1008s;
+                transform: translateY(100%);
+            }
+
+            &.open .menu-list-wrap {
+                -webkit-transition: -webkit-transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+                transition: -webkit-transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+                transition: transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+                transition: transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96), -webkit-transform .1806s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+                -webkit-transform: none;
+                transform: none;
+            }
+
+            .menu-item {
+                padding-right: 10rpx;
+                padding-bottom: 20rpx;
+                white-space: nowrap;
+                .menu-icon,
+                .menu-text {
+                    display: inline-block;
+                }
+            }
+
+            .menu-text {
+                line-height: 80rpx;
+                font-size: 30rpx;
+                padding-right: 17rpx;
+
+            }
+
+            .menu-icon .icon {
+                width: 80rpx;
+                height: 80rpx;
+                background-color: #3BA8ED;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                -webkit-box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.2);
+                box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.2);
+
+                image {
+                    width: 40rpx;
+                    height: 40rpx;
+                }
+            }
+        }
+
+        .menu-text {
+            font-size: 24rpx;
+            white-space: nowrap;
+            color:#555;
+        }
+    }
+
+    .menu-mask {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        background-color: rgba(255,255,255,.87);
+        transition:opacity .3s ease-in-out , visibility .4s ease-in-out;
+        &.open {
+            visibility: visible;
+            opacity: 1;
+
+        }
+    }
+
+</style>
+
+<template>
+    <view class="box">
+        <div class="bg-box" style="position:absolute; top: 1px;right: 0;left: 0;bottom: 0;">
+            <img src="" alt="">
+        </div>
+        <div class="text-box" style="height: 100%;z-index: 2;">
+
+        </div>
+
+    </view>
+    <view class="menu-box">
+        <view class="menu-btn {{open ? 'open' : ''}}" @tap="handleBtnTap">
+            <view class="menu-line-wrap t">
+                <view class="menu-line line-top"></view>
+            </view>
+            <view class="menu-line-wrap b">
+                <view class="menu-line line-bottom"></view>
+            </view>
+        </view>
+        <view class="menu-list {{open ? 'open' : ''}}">
+            <view class="menu-list-wrap">
+                <view class="menu-item">
+                    <navigator url="addCity" hover-class="none">
+
+                        <view class="menu-text">
+                            添加城市
+                        </view>
+                        <view class="menu-icon">
+                            <view class="icon">
+                                <image src="../assets/plus.png"></image>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+                <view class="menu-item">
+                    <navigator url="city" hover-class="none">
+                        <view class="menu-text">
+                            管理城市
+                        </view>
+                        <view class="menu-icon">
+                            <view class="icon">
+                                <image src="../assets/city.png"></image>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+
+        </view>
+    </view>
+    <view class="menu-mask {{open ? 'open' : ''}}" @tap="handleBtnTap">
+
+    </view>
+
+</template>
+
+<script>
+    import wepy from "wepy"
+
+    export default class menu extends wepy.component {
+
+        constructor ()
+        {
+            super()
+        }
+
+        data = {
+            open : false
+        }
+
+        methods = {
+            handleBtnTap(e) {
+                this.open = !this.open;
+            }
+        }
+
+        events = {
+            'pageHide' : ()=> {
+                this.open = false;
+                this.$apply();
+            }
+        }
+
+    }
+</script>

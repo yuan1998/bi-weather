@@ -97,9 +97,10 @@
 <script>
     import wepy from "wepy"
 
-    import {setCitys ,getCitys} from "../utils/utils";
+    import {setCitys ,getCitys } from "../utils/utils";
 
     export default class addCity extends wepy.page {
+
         config = {
             navigationBarTitleText : "添加城市",
             usingComponents : {

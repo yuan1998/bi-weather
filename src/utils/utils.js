@@ -26,7 +26,7 @@ export const setCitys = ({ data = null , newData }) => {
 
     if(data === null && newData ){
         data = getCitys();
-        data.push(newData);
+        data.unshift(newData);
     }
 
     return wepy.setStorageSync('BI_CITYS',data);

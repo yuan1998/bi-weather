@@ -17,7 +17,7 @@
 <script>
     import wepy from 'wepy'
     import bmap from './wxapp-jsapi-master/src/bmap-wx'
-    import {BAIDU_AK , AMAP_KEY} from "./config/config";
+    import {BAIDU_AK , AMAP_KEY , AMAP_WX_KEY} from "./config/config";
 
     import 'wepy-async-function'
 
@@ -37,13 +37,13 @@
                 enablePullDownRefresh:true,
                 backgroundTextStyle:"dark",
             }
-        }
+        };
 
         globalData = {
             userInfo: null,
             BMap : null,
             addCityData : null,
-        }
+        };
 
 
         AMapGetLocation (add)
@@ -54,6 +54,11 @@
          AMapInputtips (keyword)
         {
             return wepy.request('https://restapi.amap.com/v3/assistant/inputtips?key='+ AMAP_KEY+'&keywords='+keyword+'&type=190105|190104&datatype=all');
+        }
+
+        AMapRegeo (lnglat)
+        {
+            return wepy.request('https://restapi.amap.com/v3/geocode/regeo?key=' + AMAP_KEY+ '&location=' + lnglat + '&extensions=all')
         }
 
         constructor() {
